@@ -1,0 +1,94 @@
+<!doctype html>
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+<html>
+<head>
+    <link href="LoginPageStyles.css" rel="stylesheet" type="text/css">
+    <title> Login Page</title>
+    <!--Polymer-->
+    <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+    <link rel= "import" href="bower_components/polymer/polymer.html">
+    <link rel= "import" href="bower_components/paper-material/paper-material.html">
+    <link rel= "import" href="bower_components/paper-button/paper-button.html">
+    <link rel= "import" href="bower_components/paper-input/paper-input.html">
+    <link rel= "import" href="bower_components/paper-styles/demo.css">
+    
+    <!--Firebase-->
+<script src="https://www.gstatic.com/firebasejs/4.4.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDE-XlePCA9namERkao1ZDxz1NaGVz4QF0",
+    authDomain: "ifb102-loginpage.firebaseapp.com",
+    databaseURL: "https://ifb102-loginpage.firebaseio.com",
+    projectId: "ifb102-loginpage",
+    storageBucket: "ifb102-loginpage.appspot.com",
+    messagingSenderId: "206954169873"
+  };
+  firebase.initializeApp(config);
+</script>
+</head>
+<body>
+<template is="dom-bind" id="app">
+    <paper-material elevation = "1" style="padding: 2rem;">
+        <h2>Input your email and password.</h2>
+        
+        <p id="LoginErrors" visiblitiy:hidden> Login Error: None</p>
+        <paper-input label = "Email" value="{{email::input}}"type="text"></paper-input>
+        <paper-input label = "Password" value="{{password::input}}"type="password"></paper-input>
+        <paper-button raised class = "buttons" on-click = "signIn">Sign In</paper-button>
+        <paper-button raised class = "buttons" on-click = "signOut">Sign Out </paper-button>
+    </paper-material>
+</template>
+<script>
+    (function(){
+        var app = document.querySelector('#app')
+        app.signIn = function(){
+            var email = app.email;
+            var password = app.password;
+        if(!email || !password){
+            return console.log('email and password required');
+        }    
+        firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+          // Handle Errors here.
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          console.log(errorMessage,error);
+          if(errorCode == "auth/wrong-password" ||errorCode == "auth/user-not-found"){
+              document.getElementById("LoginErrors").innerHTML = "Invalid User or Password"
+              document.getElementById("LoginErrors").style.visibility = "visible";
+          }
+        });
+        };
+        firebase.auth().onAuthStateChanged(function(user) {
+            if(user){
+            console.log("login worked");
+            window.location.href = "MainCameraPage.html";
+            self.undelegateEvents();
+            delete self;
+            }
+            else{
+
+            }
+        });
+        app.signOut = function(){
+            var email  = "";
+            var password = "";
+        firebase.auth().signOut().then(function() {
+        console.log("logout");
+        }).catch(function(error) {
+        // An error happened.
+            console.log("logout failed");
+        });
+        }
+})();
+    </script>
+    </body>
+</html>

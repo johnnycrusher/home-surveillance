@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+    <title>Main Camera Page</title>
+    <head>
+        <link href="MainPageStyle.css" rel="stylesheet" type="text/css">
+        <!--Polymer-->
+        <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+        <link rel= "import" href="bower_components/polymer/polymer.html">
+        <link rel= "import" href="bower_components/paper-material/paper-material.html">
+        <link rel= "import" href="bower_components/paper-button/paper-button.html">
+         <!--Firebase-->
+        <script src="https://www.gstatic.com/firebasejs/4.4.0/firebase.js"></script>
+        <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyDE-XlePCA9namERkao1ZDxz1NaGVz4QF0",
+            authDomain: "ifb102-loginpage.firebaseapp.com",
+            databaseURL: "https://ifb102-loginpage.firebaseio.com",
+            projectId: "ifb102-loginpage",
+            storageBucket: "ifb102-loginpage.appspot.com",
+            messagingSenderId: "206954169873"
+        };
+        firebase.initializeApp(config);
+        </script>
+    </head>
+        <body>
+            <template is="dom-bind" id="app">
+                <paper-material elevation = "1">
+                <paper-button raised class = "buttons" on-click = "signOut">Sign Out </paper-button>
+                </paper-material>
+            </template> 
+            
+            <input type="file" id="fileinput" multiple />
+            <script>
+            app.signOut = function(){
+            var email  = "";
+            var password = "";
+            firebase.auth().signOut().then(function() {
+            console.log("logout");
+            window.location.href = "index.html";
+            self.undelegateEvents();
+            delete self;
+            }).catch(function(error) {
+            // An error happened.
+                console.log("logout failed");
+            });
+            }
+            </script>
+        </body>
+</html>
