@@ -1,0 +1,14 @@
+html {
+	margin: 0;
+	padding: 0;
+	background-color: #ADD8E6;
+}
+body {
+	font: 100% Arial, Helvetica, sans-serif;
+	background: #adbce6;
+}
+.buttons{
+	width: 7%;
+	margin:0 93%;
+	background: lightcoral
+}
