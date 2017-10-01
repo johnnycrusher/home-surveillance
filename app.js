@@ -4,11 +4,23 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var https = require('https');
+var http = require('http');
+var fs = require('fs');
 
 var index = require('./routes/index');
 
+// This line is from the Node.js HTTPS documentation.
+var options = {
+  key: fs.readFileSync('Certificates/192.168.1.94.key'),
+  cert: fs.readFileSync('Certificate/192.168.1.94.crt')
+};
 
 var app = express();
+// Create an HTTP service.
+http.createServer(app).listen(80);
+// Create an HTTPS service identical to the HTTP service.
+https.createServer(options, app).listen(443);
 
 // view engine setup
 //app.set('views', path.join(__dirname, 'views'));
