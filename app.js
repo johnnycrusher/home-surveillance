@@ -13,8 +13,8 @@ var index = require('./routes/index');
 
 // This line is from the Node.js HTTPS documentation.
 var options = {
-  key: fs.readFileSync('192.168.1.94.key'),
-  cert: fs.readFileSync('192.168.1.94.crt')
+  key: fs.readFileSync('Certificates/192.168.1.94.key'),
+  cert: fs.readFileSync('Certificates/192.168.1.94.crt')
 };
 
 
