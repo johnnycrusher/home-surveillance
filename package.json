@@ -1,5 +1,19 @@
-{
+  {
+  "name": "ifb102-project",
+  "version": "0.0.0",
   "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "body-parser": "~1.17.1",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.3",
+    "express": "~4.15.2",
+    "jade": "~1.11.0",
+    "morgan": "~1.8.1",
+    "serve-favicon": "~2.4.2"
+  },
   "devDependencies": {
     "browser-sync": "^2.7.7",
     "connect-history-api-fallback": "^1.1.0",
@@ -27,10 +41,6 @@
     "require-dir": "^0.3.0",
     "run-sequence": "^1.0.2",
     "vulcanize": ">= 1.4.2"
-  },
-  "scripts": {
-    "test": "gulp test:local",
-    "start": "gulp serve"
   },
   "engines": {
     "node": ">=0.10.0"
