@@ -22,7 +22,7 @@ var app = express();
 https.createServer(options, app).listen(8000);
 
 // Create an HTTP service.
-http.createServer(app).listen(80);
+http.createServer(app).listen(3001);
 // Create an HTTPS service identical to the HTTP service.
 // https.createServer(options, app).listen(443);
 
