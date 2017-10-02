@@ -22,15 +22,29 @@
         };
         firebase.initializeApp(config);
         </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script>
+            var folder = "pictures/FaceCap0.png";
+            var folder_dir = "pictures/";
+            var file_name = "FaceCap"
+            var file_extension = ".png";
+            $.ajax({
+                url : folder,
+                success: function (data) {
+                    for (i=0;i<100;i++){
+                    $("body").append( "<img src='"+ folder_dir+file_name+i+file_extension +"'>");
+                    }
+                }
+            });
+        </script>
     </head>
         <body>
             <template is="dom-bind" id="app">
                 <paper-material elevation = "1">
                 <paper-button raised class = "buttons" on-click = "signOut">Sign Out </paper-button>
                 </paper-material>
-            </template> 
-            
-            <input type="file" id="fileinput" multiple />
+            </template>
+            <h1>Pictures Captured By the Raspberry PiCam </h1>
             <script>
             app.signOut = function(){
             var email  = "";

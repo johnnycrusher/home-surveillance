@@ -8,6 +8,7 @@ var https = require('https');
 var http = require('http');
 var fs = require('fs');
 
+
 var index = require('./routes/index');
 // This line is from the Node.js HTTPS documentation.
 
@@ -16,7 +17,6 @@ var options = {
   key: fs.readFileSync('Certificates/192.168.1.94.key'),
   cert: fs.readFileSync('Certificates/192.168.1.94.crt')
 };
-
 
 var app = express();
 https.createServer(options, app).listen(8000);
@@ -27,8 +27,8 @@ http.createServer(app).listen(80);
 // https.createServer(options, app).listen(443);
 
 // view engine setup
-// app.set('views', path.join(__dirname, 'views'));
-// app.set('view engine', 'jade');
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));

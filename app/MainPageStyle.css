@@ -12,3 +12,10 @@ body {
 	margin:0 93%;
 	background: lightcoral
 }
+img {
+	height: 320;
+	width: 240;
+	padding: 28px;
+    margin: 0 auto;
+    
+}
