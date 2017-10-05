@@ -28,14 +28,29 @@
             var folder_dir = "pictures/";
             var file_name = "FaceCap"
             var file_extension = ".png";
+            var exist= [];
+            for (i=0;i<100;i++){
+                folder = folder_dir+file_name+i+file_extension
+            $.ajax({
+                url : folder,
+                success: function (data) { 
+                    exist.push(1);   
+                }
+            });
+            }
+
+            folder = "pictures/FaceCap0.png";
             $.ajax({
                 url : folder,
                 success: function (data) {
-                    for (i=0;i<100;i++){
-                    $("body").append( "<img src='"+ folder_dir+file_name+i+file_extension +"'>");
+                    for(i = 0;i < 100; i++){
+                    if(exist[i]==1){
+                        $("body").append( "<img src='"+ folder_dir+file_name+i+file_extension +"'>");
                     }
                 }
+            }
             });
+            
         </script>
     </head>
         <body>
