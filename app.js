@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var https = require('https');
 var http = require('http');
 var fs = require('fs');
-
+var cors = require('cors')
 
 var index = require('./routes/index');
 // This line is from the Node.js HTTPS documentation.
@@ -32,6 +32,7 @@ app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(cors({credentials: true, origin: true}));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -46,7 +47,6 @@ app.use(function(req, res, next) {
   err.status = 404;
   next(err);
 });
-
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
