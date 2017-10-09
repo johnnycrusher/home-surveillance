@@ -24,8 +24,9 @@
         </script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script>
-            var folder = "https://192.168.1.220:8000/pictures/FaceCap0.png";
-            var folder_dir = "https://192.168.1.220:8000/pictures/";
+            var address = "https://192.168.1.220:8000/"
+            var folder = address + "pictures/FaceCap0.png";
+            var folder_dir = address + "pictures/";
             var file_name = "FaceCap"
             var file_extension = ".png";
             var exist= [];
@@ -40,7 +41,7 @@
             });
             }
 
-            folder = "https://192.168.1.220:8000/pictures/FaceCap0.png";
+            folder = address + "pictures/FaceCap0.png";
             $.ajax({
                 url : folder,
                 success: function (data) {

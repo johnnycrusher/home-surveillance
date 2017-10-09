@@ -50,12 +50,15 @@ var = 0;
 File_extension = ".png"
 Encrption_extension = ".enc"
 send = False;
+address = "192.168.1.220"
+Username = "john"
+password = ""
 while(1):
 	if(os.path.isfile(FileName+str(number)+File_extension)):
 		encrypt_file("1234567891234567",FileName+str(number)+File_extension,  None, 64*1024)
 		filename = FileName+str(number)+File_extension+Encrption_extension	
-		ftp = ftplib.FTP("192.168.1.220")
-		ftp.login("john","Nohackers6=");
+		ftp = ftplib.FTP(address)
+		ftp.login(username,password);
 		ftp.cwd("/home/john/ifb102-project/app/pictures/")
 		myfile = open(filename, 'rb')	
 		ftp.storbinary('STOR ' + filename, myfile)
