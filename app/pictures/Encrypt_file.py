@@ -1,4 +1,5 @@
 import os, random, struct
+import time
 import ftplib
 from Crypto.Cipher import AES
 
@@ -48,18 +49,24 @@ FileName = 'FaceCap';
 number = 0;
 var = 0;
 File_extension = ".png"
-Encrption_extension = ".enc"
+Encryption_extension = ".enc"
 send = False;
-address = "192.168.1.220"
-Username = "john"
-password = ""
+address = "172.19.48.245"
+username = "pi"
+password = "BlackBlue123="
+for x in range(0,100):
+	if(os.path.isfile(FileName+str(x)+File_extension)):
+		os.remove(FileName+str(x)+File_extension)
+	if(os.path.isfile(FileName+str(x)+File_extension+Encryption_extension)):
+		os.remove(FileName+str(x)+File_extension+Encryption_extension)
 while(1):
+	time.sleep(1)
 	if(os.path.isfile(FileName+str(number)+File_extension)):
 		encrypt_file("1234567891234567",FileName+str(number)+File_extension,  None, 64*1024)
-		filename = FileName+str(number)+File_extension+Encrption_extension	
+		filename = FileName+str(number)+File_extension+Encryption_extension	
 		ftp = ftplib.FTP(address)
 		ftp.login(username,password);
-		ftp.cwd("/home/john/ifb102-project/app/pictures/")
+		ftp.cwd("/home/pi/ifb102-project/app/pictures/")
 		myfile = open(filename, 'rb')	
 		ftp.storbinary('STOR ' + filename, myfile)
 		myfile.close()
