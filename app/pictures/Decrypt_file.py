@@ -34,8 +34,8 @@ Encrption_extension = ".enc"
 for x in range(0,100):
 	if(os.path.isfile(FileName+str(x)+File_extension)):
 		os.remove(FileName+str(x)+File_extension)
-	if(os.path.isfile(FileName+str(x)+File_extension+Encryption_extension)):
-		os.remove(FileName+str(x)+File_extension+Encryption_extension)
+	if(os.path.isfile(FileName+str(x)+File_extension+Encrption_extension)):
+		os.remove(FileName+str(x)+File_extension+Encrption_extension)
 while(1):
 	time.sleep(2);
 	if(os.path.isfile(FileName+str(number)+File_extension+Encrption_extension)):
