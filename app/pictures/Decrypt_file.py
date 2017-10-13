@@ -31,8 +31,13 @@ FileName = 'FaceCap';
 number = 0;
 File_extension = ".png"
 Encrption_extension = ".enc"
+for x in range(0,100):
+	if(os.path.isfile(FileName+str(x)+File_extension)):
+		os.remove(FileName+str(x)+File_extension)
+	if(os.path.isfile(FileName+str(x)+File_extension+Encryption_extension)):
+		os.remove(FileName+str(x)+File_extension+Encryption_extension)
 while(1):
-	time.sleep(0.5);
+	time.sleep(2);
 	if(os.path.isfile(FileName+str(number)+File_extension+Encrption_extension)):
 		decrypt_file("1234567891234567",FileName+str(number)+File_extension+Encrption_extension,FileName+str(number)+File_extension,24*1024)
 		number +=1;
