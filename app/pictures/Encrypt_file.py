@@ -51,7 +51,7 @@ var = 0;
 File_extension = ".png"
 Encryption_extension = ".enc"
 send = False;
-address = "172.19.48.245"
+address = "192.168.1.86"
 username = "pi"
 password = "BlackBlue123="
 for x in range(0,100):
